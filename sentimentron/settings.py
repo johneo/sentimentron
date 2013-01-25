@@ -8,7 +8,7 @@ SECRET_KEY = ')o0i5k8zehjsghb%-79&0+0m02qw6al3%1r@5-(6d#@cwgv-()'
 
 # Default database settings for dev
 DATABASE_ENGINE = 'django.db.backends.sqlite3'
-DATABASE_NAME = 'sentimentron'
+DATABASE_NAME = 'sentimentron.db'
 DATABASE_USER = ''
 DATABASE_PASSWORD = ''
 DATABASE_HOST = ''
@@ -136,7 +136,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'sentiment',
+    'south',
+    'sentimentron.sentiment',
 )
 
 # A sample logging configuration. The only tangible logging

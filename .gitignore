@@ -36,3 +36,5 @@ nosetests.xml
 
 # Our secrets file for passwords/etc
 secrets.py
+sentimentron.db
+
