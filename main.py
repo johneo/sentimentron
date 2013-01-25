@@ -56,7 +56,7 @@ def new_classifier():
             scored_texts.append((bag, nps))
     c = classifier.NPSClassifier()
     c.train(scored_texts)
-    c.save_to_file('CLASSIFIER_FILE')
+    c.save_to_file(CLASSIFIER_FILE)
     return c
 
 
