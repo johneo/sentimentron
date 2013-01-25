@@ -1,6 +1,8 @@
 
 # livin' on the edge
 -e git+https://github.com/django/django.git@1.5b2#egg=django
+-e git+https://github.com/toastdriven/django-tastypie.git#egg=django-tastypie
+-e git+https://github.com/joshmarshall/TweetStream.git@74355ddd8718e700e0fac25447010af7f73c60f3#egg=tweetstream-dev
 
 South
 pyyaml
