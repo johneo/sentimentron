@@ -7,6 +7,7 @@
 South
 pyyaml
 nltk
+requests
 # You can comment these out if running locally with sqlite
 #MySQL-python
 gunicorn

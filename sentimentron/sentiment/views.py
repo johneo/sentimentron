@@ -1,4 +1,5 @@
 import json
+import logging
 
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -30,11 +31,12 @@ def add_sentiment(request):
     if form.is_valid():
         form.save()
         return HttpResponse(json.dumps({'message': 'Success'}),
-                            mime_type="application/json")
+                            mimetype="application/json")
     else:
         err = {'errors': form.errors.as_text()}
+        logging.error(err)
         return HttpResponse(json.dumps(err),
-                            mime_type="application/json",
+                            mimetype="application/json",
                             status=400)
     
         
