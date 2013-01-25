@@ -18,6 +18,10 @@ def index(request):
     ctx = {'data': json.dumps(Sentiment.histogram())}
     return render(request, 'index.html', ctx)
 
+def data(request):
+    data = json.dumps(Sentiment.histogram())
+    return HttpResponse(data, mimetype='application/json')
+
 
 @csrf_exempt
 @require_http_methods(["POST"])
