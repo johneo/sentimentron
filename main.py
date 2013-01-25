@@ -3,6 +3,7 @@
 import classifier
 import streamer
 import requests
+from time import strftime, strptime
 
 CLASSIFIER_FILE = 'classifier.pickle'
 CONFIG_FILE = 'sentimental.conf'
@@ -21,7 +22,16 @@ class NPSStreamer(streamer.Streamer):
         requests.post(self.dj_url, post_data)
 
     def callback(self, message):
-        date = message['created_at']
+        date = message['created_at'][4:-11]
+        # have: Fri Jan 25 23:07:59 +0000 2013
+        # want: 2013-01-25 17:07:11
+        date_str = "%b %d %H:%M:%S"
+        date = strptime(date, date_str)
+
+        date_str = "2013-%m-%d %H:%M:%S"
+        date = strftime(date_str, date)
+
+        #date = parse_date(date)
         text = message['text'].encode('ascii', 'ignore')
         score = self.classifier.classify(text)
         if not score:
