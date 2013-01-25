@@ -7,6 +7,8 @@ Fabric==1.5.1
 django-social-auth==0.7.12
 requests
 South
+pyyaml
+nltk
 # You can comment these out if running locally with sqlite
 #MySQL-python
 gunicorn
