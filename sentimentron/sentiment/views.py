@@ -15,7 +15,7 @@ class SentimentForm(forms.ModelForm):
 
 
 def index(request):
-    ctx = {'data': json.dumps(Sentiment.histogram)}
+    ctx = {'data': json.dumps(Sentiment.histogram())}
     return render(request, 'index.html', ctx)
 
 
