@@ -1,10 +1,20 @@
 #!/usr/bin/env python
 import pickle
-import utils
 
 import nltk
 import nltk.classify
 from nltk.classify import NaiveBayesClassifier
+
+def bag_of_words(text):
+    tokens = nltk.wordpunct_tokenize(text)
+    lemma = nltk.WordNetLemmatizer()
+    tokens = [lemma.lemmatize(token.lower()) for token in tokens]
+    tokens = [token for token in tokens if len(token) >= 6]
+    if len(tokens) == 0:
+        return None
+    bag = dict([(word, True) for word in nltk.Text(tokens)])
+    return bag
+
 
 class NPSClassifier(object):
     
@@ -16,8 +26,13 @@ class NPSClassifier(object):
         self._classifier = NaiveBayesClassifier.train(scored_texts)
 
     def classify(self, tweet):
-        # Given a single tweet, extract the text and rate it.
-        return self._classifier.classify(tweet)
+        bag = bag_of_words(tweet)
+        if not bag:
+            return None
+        try:
+            return self._classifier.classify(bag)
+        except Exception:
+            return None
 
     def save_to_file(self, filename):
         with open(filename, 'wb') as outf:
