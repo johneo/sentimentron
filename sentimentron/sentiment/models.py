@@ -38,7 +38,7 @@ class Sentiment(models.Model):
         from django.db import connection
         cursor = connection.cursor()
         cursor.execute(HISTOGRAM)
-        Day = namedtuple('Day', 'count score date')
+        Day = namedtuple('Day', 'value key date')
         days = map(Day._make, cursor.fetchall())
         return [dict(d._asdict()) for d in days]
 
